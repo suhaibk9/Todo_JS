@@ -50,3 +50,20 @@ body {
 #add-todo:hover {
   background-color: var(--btn-primary-hover);
 }
+.todo-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+  list-style: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  background-color: #f8f9fa;
+}
