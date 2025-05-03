@@ -73,9 +73,16 @@ function appendToList(todo) {
   const wrapperButtons = document.createElement('div');
   wrapperButtons.classList.add('wrapperBtn');
   //Edit Button
-  const editButton = document.createElement('button');
-  editButton.innerText = 'Edit';
-  editButton.classList.add('editBtn');
+  let editButton = null;
+  if (!todo.isCompleted) {
+    editButton = document.createElement('button');
+    editButton.innerText = 'Edit';
+    editButton.classList.add('editBtn');
+    editButton.addEventListener('click', (e) => {
+      console.log('edit');
+      editTodo(e);
+    });
+  }
   //Delete Button
   const deleteButton = document.createElement('button');
   deleteButton.innerText = 'Delete';
@@ -92,8 +99,14 @@ function appendToList(todo) {
     console.log('complete');
     completeTodo(e);
   });
+  if (todo.isCompleted) {
+    completedButton.innerText = 'Done';
+    completedButton.setAttribute('disabled', true);
+  }
   //Attaching to li tag
-  wrapperButtons.appendChild(editButton);
+  if (!todo.isCompleted) {
+    wrapperButtons.appendChild(editButton);
+  }
   wrapperButtons.appendChild(deleteButton);
   wrapperButtons.appendChild(completedButton);
   //Adding Buttons to li
@@ -156,4 +169,16 @@ function deleteTodo(e) {
   const todoId = todoItem.getAttribute('data-id');
   let allTodos = loadTodos().filter((todo) => todo.id != todoId);
   refreshTodos(allTodos);
+}
+function editTodo(event) {
+  const todoItem = event.target.parentElement.parentElement;
+  const todoId = todoItem.getAttribute('data-id');
+  const allTodos = loadTodos();
+  const todoIndex = allTodos.findIndex((todo) => todo.id == todoId);
+  const todoText = allTodos[todoIndex].text;
+  const newTodoText = prompt('Edit your todo:', todoText);
+  if (newTodoText) {
+    allTodos[todoIndex].text = newTodoText;
+    refreshTodos(allTodos);
+  }
 }
