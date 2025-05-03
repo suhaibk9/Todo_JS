@@ -14,8 +14,13 @@
         <h1>Todo App</h1>
         <input type="text" placeholder="Add A New Todo" id="todo-input" />
         <button id="add-todo">Add Todo</button>
+        <div>
+            <button class="filterBtn" data-filter="all">All</button>
+            <button class="filterBtn" data-filter="pending">Active</button>
+            <button class="filterBtn" data-filter="completed">Completed</button>
+        </div>
         <ul id="todo-list">
-
+            <!-- Todo items will be dynamically added here -->
         </ul>
     </div>
 </body>

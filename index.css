@@ -6,6 +6,15 @@
   --body-background: #f4f4f9;
   --btn-primary: #007bff;
   --btn-primary-hover: #0056b3;
+  --btn-secondary: #6c757d;
+  --btn-active: #4a90e2;
+  --btn-secondary-hover: #5a6268;
+  --btn-edit: #ffc107;
+  --btn-edit-hover: #e0a800;
+  --btn-complete: #32cd23;
+  --btn-complete-hover: #228b22;
+  --btn-delete: #ff4d4d;
+  --btn-delete-hover: #ff0000;
 }
 
 body {
@@ -50,20 +59,81 @@ body {
 #add-todo:hover {
   background-color: var(--btn-primary-hover);
 }
-.todo-item {
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
   padding: 10px;
-  margin: 5px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #333;
-  font-size: 16px;
-  list-style: none;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+li:last-child {
+  border-bottom: none;
+}
+li:hover {
+  background-color: aliceblue;
 }
 
-.todo-item:hover {
-  transform: translateY(-2px);
-  background-color: #f8f9fa;
+.filterBtn,
+.editBtn,
+.deleteBtn,
+.completeBtn {
+  margin-left: 4px;
+  padding: 8px 12px;
+  margin-top: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: var(--btn-secondary);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.editBtn {
+  background-color: var(--btn-edit);
+}
+.completeBtn {
+  background-color: var(--btn-complete);
+}
+.deleteBtn {
+  background-color: var(--btn-delete);
+}
+.filterBtn {
+  background-color: var(--btn-active);
+}
+.filterBtn:hover {
+  background-color: var(--btn-active);
+}
+.editBtn:hover {
+  background-color: var(--btn-edit-hover);
+}
+.deleteBtn:hover {
+  background-color: var(--btn-delete-hover);
+}
+.completeBtn:hover {
+  background-color: var(--btn-complete-hover);
+}
+
+.filterBtn:hover,
+.editBtn:hover,
+.deleteBtn:hover,
+.completeBtn:hover {
+  background-color: var(--btn-secondary-hover);
+}
+
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.wrapperBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: #ccc;
 }
